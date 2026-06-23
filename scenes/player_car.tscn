@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://player_car_scene"]
+
+[ext_resource type="Script" path="res://scripts/player_car.gd" id="1_script"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
+radius = 14.0
+height = 42.0
+
+[node name="PlayerCar" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("1_script")
+
+[node name="Sprite" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-24, -13, 28, -13, 34, 0, 28, 13, -24, 13, -30, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1")

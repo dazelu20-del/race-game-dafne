@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://main_race_scene"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_gm"]
+[ext_resource type="Script" path="res://scripts/monaco_track.gd" id="2_track"]
+[ext_resource type="PackedScene" uid="uid://player_car_scene" path="res://scenes/player_car.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://ai_car_scene" path="res://scenes/ai_car.tscn" id="4_ai"]
+[ext_resource type="PackedScene" uid="uid://hud_scene" path="res://scenes/hud.tscn" id="5_hud"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_gm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Track" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_track")
+
+[node name="StartPositions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="P1" type="Marker2D" parent="StartPositions"]
+position = Vector2(228, 710)
+rotation = -1.5707964
+
+[node name="P2" type="Marker2D" parent="StartPositions"]
+position = Vector2(192, 710)
+rotation = -1.5707964
+
+[node name="P3" type="Marker2D" parent="StartPositions"]
+position = Vector2(228, 665)
+rotation = -1.5707964
+
+[node name="P4" type="Marker2D" parent="StartPositions"]
+position = Vector2(192, 665)
+rotation = -1.5707964
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+unique_name_in_owner = true
+position = Vector2(228, 710)
+rotation = -1.5707964
+
+[node name="AICar1" parent="." instance=ExtResource("4_ai")]
+unique_name_in_owner = true
+position = Vector2(192, 710)
+rotation = -1.5707964
+color = Color(0.92, 0.2, 0.2, 1)
+max_speed = 340.0
+
+[node name="AICar2" parent="." instance=ExtResource("4_ai")]
+unique_name_in_owner = true
+position = Vector2(228, 665)
+rotation = -1.5707964
+color = Color(0.2, 0.85, 0.35, 1)
+max_speed = 320.0
+
+[node name="AICar3" parent="." instance=ExtResource("4_ai")]
+unique_name_in_owner = true
+position = Vector2(192, 665)
+rotation = -1.5707964
+color = Color(0.95, 0.75, 0.15, 1)
+max_speed = 300.0
+
+[node name="HUD" parent="." instance=ExtResource("5_hud")]
+unique_name_in_owner = true
